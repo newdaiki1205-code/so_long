@@ -12,7 +12,8 @@ int map_check(t_list *head)
     if(size < 0 || size < 3)
         return -1;
     data_box = make_data_box();
-    check_char(current, data_box, size);
+    if(check_char(current, data_box, size) < 0)
+        return -1;
     return free(data_box), 0;
 }
 
@@ -37,7 +38,6 @@ int check_char(t_list *current, t_mapcheck *data_box, int size)
     while(current)
     {
         i = 0;
-        printf("loop %d\n", current->line);
         while(i < ft_strlen(current->str))
         {
             if((check_wall(current->str, current->line, size) < 0))
@@ -54,7 +54,6 @@ int check_char(t_list *current, t_mapcheck *data_box, int size)
         }
         current = current->next;
     }
-    printf("p:%d e:%d c:%d", data_box->p, data_box->e, data_box->c);
     if(data_box->p != 1 || data_box->e != 1 || data_box->c < 1)
         return -1;
     return 0;

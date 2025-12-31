@@ -82,6 +82,8 @@ t_list *make_map_list(char *file_name)
     int i;
 
     fd = open(file_name, O_RDONLY);
+    if(!fd)
+        return NULL;
     head = NULL;
     i = 0;
     while((read_str = get_next_line(fd)))
@@ -109,9 +111,11 @@ int main(int ac, char **av)
         return 1;
     file_name = av[1];
     map_data = make_map_list(file_name);
+    if(!map_data)
+        return 1;
     temp = map_data;
-    if(map_check(temp) < 0)
-        printf("Error");
+    if(map_check(temp) < 0 || goal_check(temp))
+        printf("Error: Invalid Map");
     // printf("%d\n", count_list(temp));
     // while(temp)
     // {

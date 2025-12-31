@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRC = make_map.c get_next_line.c get_next_line_utils.c
+SRC = map_list.c get_next_line.c get_next_line_utils.c map_check.c so_long_helper.c goal_check.c flood_fill.c
 
 CC = cc
 FLAGS = -Wall -Werror -Wextra -g
@@ -14,16 +14,18 @@ STD_LIB = -L/usr/lib -lXext -lX11 -lm -lz
 
 MLX_HEAD = -I$(MLX_DIR)
 STD_HEAD = -I/usr/include
-GNL_HEAD = -I.
+MY_HEAD = -I.
 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) $(MLX_LIB) $(STD_LIB) $(MLX_HEAD) -o $(NAME)
+#	$(CC) $(OBJ) $(MLX_LIB) $(STD_LIB) $(MLX_HEAD) -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME)
 
 %.o:%.c
-	$(CC) $(FLAGS) $(STD_HEAD) $(MLX_HEAD) $(GNL_HEAD) -O3 -c $< -o $@
+#	$(CC) $(FLAGS) $(STD_HEAD) $(MLX_HEAD) $(MY_HEAD) -O3 -c $< -o $@
+	$(CC) $(FLAGS) $(STD_HEAD) $(MY_HEAD) -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
