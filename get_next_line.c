@@ -117,7 +117,7 @@ char	*make_save(char **save, char **buf, int re)
 //  	fd = open("map.ber", O_RDONLY);
 //  	while ((test = get_next_line(fd)))
 //  	{
-//  		printf("line %s", test);
+//  		printf("%s", test);
 //  		free(test);
 //  	}
 //  	close(fd);
