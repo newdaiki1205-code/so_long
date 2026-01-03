@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:34:49 by dshirais          #+#    #+#             */
-/*   Updated: 2025/11/16 20:15:54 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/02 23:12:33 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	*ft_strjoin_result(char *s1, char *s2)
 	int		i;
 	int		size;
 
+	if(!s1)
+		return NULL;
 	if (!s1 && !s2)
 		return (NULL);
 	if (check(s1, 1) && !s2)
@@ -90,6 +92,8 @@ char	*ft_strjoin_save(char *s1, char *s2)
 	int		i;
 	int		size;
 
+	if(!s1)
+		return NULL;
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s2)
@@ -107,3 +111,4 @@ char	*ft_strjoin_save(char *s1, char *s2)
 	str[size] = '\0';
 	return (str);
 }
+

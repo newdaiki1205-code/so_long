@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 13:30:02 by dshirais          #+#    #+#             */
-/*   Updated: 2025/12/29 17:15:20 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/02 23:20:25 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ char	*get_next_line(int fd)
 	char		*buf;
 	int			re;
 
+	if(fd < 0)
+	{
+		if(save)
+		{
+			free(save);
+			save = NULL;
+		}
+		return NULL;
+	}
 	while (1)
 	{
 		re = make_buf_and_read(&buf, fd);
