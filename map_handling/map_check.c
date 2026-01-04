@@ -15,7 +15,7 @@ int	map_check(t_list *head)
     if(!data_box)
         return -1;
     if (check_char(current, data_box, size) < 0)
-		return (-1);
+		return (free(data_box), -1);
 	free(data_box);
 	return (0);
 }
@@ -36,7 +36,7 @@ t_mapcheck	*make_data_box(void)
 
 int	check_char(t_list *current, t_mapcheck *data_box, int size)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (current)
@@ -66,7 +66,7 @@ int	check_char(t_list *current, t_mapcheck *data_box, int size)
 
 int	check_wall(char *str, int line, int size)
 {
-    size_t len;
+    int len;
 
 	len = where_is_nl(str);
 	if(len < 1)
@@ -82,7 +82,7 @@ int	is_it_same(t_list *head)
 {
 	t_list	*current;
 	int		i;
-	size_t	len;
+	int	len;
 	int		last;
 
 	if (!head)
@@ -121,9 +121,9 @@ int	nl_finder(char *str)
 	return (0);
 }
 
-size_t  where_is_nl(char *str)
+int  where_is_nl(char *str)
 {
-    size_t  i;
+    int  i;
 
 	i = 0;
     if (!str || str[0] == '\0')

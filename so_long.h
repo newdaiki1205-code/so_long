@@ -6,17 +6,18 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:56:57 by dshirais          #+#    #+#             */
-/*   Updated: 2026/01/03 23:18:32 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/04 21:11:42 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "get_next_line.h"
 # include "ft_printf.h"
+# include "get_next_line.h"
 # include "mlx.h"
 # include <fcntl.h>
+# include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -56,14 +57,16 @@ typedef struct s_game
 	t_img			exit;
 	t_img			player;
 	t_img			money;
+	t_img			clear;
 	char			**map_data;
-	size_t			map_width;
+	int				map_width;
 	int				map_height;
 	int				player_x;
 	int				player_y;
+	int				move_count;
 }					t_game;
 
-size_t				ft_strlen(const char *s);
+int					ft_strlen(const char *s);
 char				*ft_strdup(const char *s);
 int					check_lines(char *file_name);
 char				**make_map_data(char *file_name);
@@ -84,7 +87,7 @@ void				fill(char **table, t_goalcheck *size, char wall, int row,
 int					final_check(char **table, int size);
 int					is_it_same(t_list *head);
 int					nl_finder(char *str);
-size_t				where_is_nl(char *str);
+int					where_is_nl(char *str);
 int					is_it_closed(char *str);
 t_game				*get_game_data(char *filename);
 char				**is_it_valid_map(char *filename, t_game *data);
@@ -94,5 +97,12 @@ t_list				*make_map_list(char *file_name);
 int					handle_input(int keycode, t_game *data);
 void				where_is_player(char **table, t_game *data);
 void				redraw_map(int next_x, int next_y, t_game *data);
+void				you_get_goal(t_game *data);
+int					do_you_collect_all(char **table, int size);
+void				free_mlx_ptr(t_game *data);
+void				window_manager(t_game *data);
+void				*ft_calloc(size_t nmemb, size_t size);
+void				*ft_memset(void *s, int c, size_t n);
+int					get_img_ptr(t_game *data);
 
 #endif

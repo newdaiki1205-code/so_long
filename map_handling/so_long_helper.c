@@ -1,8 +1,8 @@
 #include "so_long.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	if(!s)
 		return 0;
@@ -14,8 +14,8 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strdup(const char *s)
 {
-	size_t	size;
-	size_t	i;
+	int	size;
+	int	i;
 	char	*str;
 
 	size = ft_strlen(s);
@@ -30,4 +30,33 @@ char	*ft_strdup(const char *s)
 	}
 	str[i] = '\0';
 	return (str);
+}
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*arr;
+
+	if (nmemb == 0 || size == 0)
+		return (ft_strdup(""));
+	if (nmemb != 0 && SIZE_MAX / nmemb < size)
+		return (NULL);
+	arr = malloc(nmemb * size);
+	if (!arr)
+		return (NULL);
+	ft_memset(arr, 0, nmemb * size);
+	return (arr);
+}
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*p;
+
+	i = 0;
+	p = (unsigned char *)s;
+	while (i < n)
+	{
+		p[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }

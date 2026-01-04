@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 12:50:00 by dshirais          #+#    #+#             */
-/*   Updated: 2026/01/03 23:22:46 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/04 18:47:46 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-// size_t	ft_strlen(const char *s)
+// int	ft_strlen(const char *s)
 // {
-// 	size_t	i;
+// 	int	i;
 
 // 	i = 0;
 // 	while (s[i] != '\0')

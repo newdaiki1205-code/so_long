@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:21:14 by dshirais          #+#    #+#             */
-/*   Updated: 2026/01/03 23:15:56 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/04 18:47:46 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int		ft_putnbr_pointer(unsigned long n, int len, char a);
 int		print_pointer(unsigned long n, int len, char a);
 int		print_others(char a);
 void	ft_putstr_fd(char *s, int fd);
-size_t	ft_strlen(const char *s);
+int	ft_strlen(const char *s);
 
 #endif

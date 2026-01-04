@@ -6,15 +6,15 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:34:49 by dshirais          #+#    #+#             */
-/*   Updated: 2026/01/02 23:12:33 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/04 18:47:46 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	check(const char *s, int flag)
+int	check(const char *s, int flag)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i])

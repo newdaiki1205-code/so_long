@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 21:56:10 by dshirais          #+#    #+#             */
-/*   Updated: 2026/01/03 22:34:03 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/04 19:29:56 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	main(int ac, char **av)
 	game_data = get_game_data(file_name);
 	if (!game_data)
 		return (1);
-	render_window(game_data);
-    mlx_key_hook(game_data->mlx_win, handle_input, game_data);
-    mlx_loop(game_data->mlx);
+	window_manager(game_data);
 	return (0);
 }
