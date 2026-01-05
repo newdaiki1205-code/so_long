@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_list.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/05 14:25:15 by dshirais          #+#    #+#             */
+/*   Updated: 2026/01/05 17:55:56 by dshirais         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
-#include <stdio.h>
 
 t_list	*make_newnode(char *str)
 {
@@ -81,25 +92,18 @@ t_list	*make_map_list(char *file_name)
 		return (NULL);
 	head = NULL;
 	i = 0;
-	while ((read_str = get_next_line(fd)))
+	while (1)
 	{
+		read_str = get_next_line(fd);
+		if (!read_str)
+			break ;
 		new = make_newnode(read_str);
 		if (!new)
-		{
-			free(read_str);
-			while ((read_str = get_next_line(fd)))
-				free(read_str);
-			close(fd);
-			free_list(&head);
-			return (NULL);
-		}
+			return (error_map(read_str, fd, head), (NULL));
 		new->line = i;
 		add_last(&head, new);
 		i++;
 		free(read_str);
 	}
-	close(fd);
-	return (head);
+	return (close(fd), head);
 }
-
-

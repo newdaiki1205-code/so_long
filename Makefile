@@ -13,8 +13,10 @@ SRC = main.c \
 		./map_handling/so_long_helper.c \
 		./map_handling/goal_check.c \
 		./map_handling/flood_fill.c \
+		./map_handling/map_helper.c \
 		./graphic_manage/mlx_data.c \
 		./graphic_manage/window_handling.c \
+		./graphic_manage/window_helper.c \
 
 
 CC = cc

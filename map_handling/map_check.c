@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/05 14:39:33 by dshirais          #+#    #+#             */
+/*   Updated: 2026/01/05 14:48:22 by dshirais         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 #include <stdio.h>
 
@@ -12,14 +24,13 @@ int	map_check(t_list *head)
 	if (size < 0 || size < 3)
 		return (-1);
 	data_box = make_data_box();
-    if(!data_box)
-        return -1;
-    if (check_char(current, data_box, size) < 0)
+	if (!data_box)
+		return (-1);
+	if (check_char(current, data_box, size) < 0)
 		return (free(data_box), -1);
 	free(data_box);
 	return (0);
 }
-
 
 t_mapcheck	*make_data_box(void)
 {
@@ -46,14 +57,7 @@ int	check_char(t_list *current, t_mapcheck *data_box, int size)
 		i = 0;
 		while (i < ft_strlen(current->str))
 		{
-			if (current->str[i] == 'P')
-				data_box->p++;
-			else if (current->str[i] == 'E')
-				data_box->e++;
-			else if (current->str[i] == 'C')
-				data_box->c++;
-			else if (current->str[i] != '0' && current->str[i] != '1'
-				&& current->str[i] != '\n')
+			if (count_char(current, data_box, i) < 0)
 				return (-1);
 			i++;
 		}
@@ -66,23 +70,23 @@ int	check_char(t_list *current, t_mapcheck *data_box, int size)
 
 int	check_wall(char *str, int line, int size)
 {
-    int len;
+	int	len;
 
 	len = where_is_nl(str);
-	if(len < 1)
+	if (len < 1)
 		return (-1);
-	if(str[0] != '1' || str[len - 1] != '1')
+	if (str[0] != '1' || str[len - 1] != '1')
 		return (-1);
-	if((line == 0 || line == size - 1) && (is_it_closed(str) < 0))
+	if ((line == 0 || line == size - 1) && (is_it_closed(str) < 0))
 		return (-1);
-	return 0;
+	return (0);
 }
 
 int	is_it_same(t_list *head)
 {
 	t_list	*current;
 	int		i;
-	int	len;
+	int		len;
 	int		last;
 
 	if (!head)
@@ -101,48 +105,4 @@ int	is_it_same(t_list *head)
 		current = current->next;
 	}
 	return (i);
-}
-
-int	nl_finder(char *str)
-{
-	int	i;
-	int	nl;
-
-	i = 0;
-	nl = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			nl++;
-		i++;
-	}
-	if (nl < 1)
-		return (1);
-	return (0);
-}
-
-int  where_is_nl(char *str)
-{
-    int  i;
-
-	i = 0;
-    if (!str || str[0] == '\0')
-        return (0);
-    while (str[i] && str[i] != '\n')
-        i++;
-    return (i);
-}
-
-int	is_it_closed(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] != '1' && str[i] != '\n')
-			return (-1);
-		i++;
-	}
-    return i;
 }

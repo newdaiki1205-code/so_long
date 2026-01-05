@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 21:56:10 by dshirais          #+#    #+#             */
-/*   Updated: 2026/01/04 19:29:56 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/05 18:39:11 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 int	main(int ac, char **av)
 {
-	char *file_name;
-	t_game *game_data;
+	char	*file_name;
+	t_game	*game_data;
 
 	if (ac != 2)
-		return (1);
+		return (ft_printf("Error: Please pass only one map file\n"), 1);
 	file_name = av[1];
 	game_data = get_game_data(file_name);
 	if (!game_data)

@@ -6,12 +6,11 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 19:03:33 by dshirais          #+#    #+#             */
-/*   Updated: 2026/01/04 22:12:29 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/05 18:37:10 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 t_game	*get_game_data(char *filename)
 {
@@ -23,7 +22,11 @@ t_game	*get_game_data(char *filename)
 	data->map_data = is_it_valid_map(filename, data);
 	if (!data->map_data)
 		return (free(data), NULL);
-	if (!(data->mlx = mlx_init()) || (get_img_ptr(data) < 0))
+	data->mlx = mlx_init();
+	if (!data->mlx)
+		return (free_copy(data->map_data, data->map_height - 1),
+			free_mlx_ptr(data), NULL);
+	if ((get_img_ptr(data) < 0))
 		return (free_copy(data->map_data, data->map_height - 1),
 			free_mlx_ptr(data), NULL);
 	data->mlx_win = mlx_new_window(data->mlx, data->map_width * 32,
@@ -43,7 +46,7 @@ char	**is_it_valid_map(char *filename, t_game *data)
 
 	map_list = make_map_list(filename);
 	if (!map_list)
-		return (NULL);
+		return (ft_printf("Error\n"), NULL);
 	temp = map_list;
 	if (map_check(temp) < 0 || goal_check(temp))
 	{
@@ -53,7 +56,7 @@ char	**is_it_valid_map(char *filename, t_game *data)
 	}
 	table = make_copy(temp);
 	if (!table)
-		return (free_list(&map_list), NULL);
+		return (ft_printf("Error\n"), free_list(&map_list), NULL);
 	data->map_width = where_is_nl(map_list->str);
 	data->map_height = count_list(map_list);
 	if (data->map_width > 60 || data->map_height > 31)
@@ -106,7 +109,7 @@ void	free_mlx_ptr(t_game *data)
 	while (i < 6)
 	{
 		if (img_ptr[i])
-            mlx_destroy_image(data->mlx, img_ptr[i]);
+			mlx_destroy_image(data->mlx, img_ptr[i]);
 		i++;
 	}
 	if (data->mlx_win)
@@ -147,4 +150,3 @@ int	get_img_ptr(t_game *data)
 		return (-1);
 	return (0);
 }
-

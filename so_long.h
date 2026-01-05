@@ -6,7 +6,7 @@
 /*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 18:56:57 by dshirais          #+#    #+#             */
-/*   Updated: 2026/01/04 21:11:42 by dshirais         ###   ########.fr       */
+/*   Updated: 2026/01/05 18:29:05 by dshirais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ t_goalcheck			*before_check(char **table, int size, int flag);
 void				find_player(t_goalcheck *result, char **table);
 void				flood_fill(char **table, t_goalcheck *size,
 						t_goalcheck *begin);
-void				fill(char **table, t_goalcheck *size, char wall, int row,
-						int col);
+void				fill(char **table, t_goalcheck *size, int row, int col);
 int					final_check(char **table, int size);
 int					is_it_same(t_list *head);
 int					nl_finder(char *str);
@@ -104,5 +103,9 @@ void				window_manager(t_game *data);
 void				*ft_calloc(size_t nmemb, size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 int					get_img_ptr(t_game *data);
+void				error_map(char *read_str, int fd, t_list *head);
+int					count_char(t_list *current, t_mapcheck *data_box, int i);
+int					put_img_towin(t_game *data, int x, int y);
+int					close_window(t_game *data);
 
 #endif

@@ -1,36 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long_helper.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dshirais <dshirais@student.42vienna.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/05 14:37:19 by dshirais          #+#    #+#             */
+/*   Updated: 2026/01/05 14:40:56 by dshirais         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	ft_strlen(const char *s)
 {
 	int	i;
 
-	if(!s)
-		return 0;
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i] != '\0')
-        i++;
+		i++;
 	return (i);
 }
 
 char	*ft_strdup(const char *s)
 {
-	int	size;
-	int	i;
+	int		size;
+	int		i;
 	char	*str;
 
 	size = ft_strlen(s);
-	str = (char*)malloc(sizeof(char) * (size + 1));
+	str = (char *)malloc(sizeof(char) * (size + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
 	while (i < size)
 	{
-        str[i] = s[i];
+		str[i] = s[i];
 		i++;
 	}
 	str[i] = '\0';
 	return (str);
 }
+
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*arr;
